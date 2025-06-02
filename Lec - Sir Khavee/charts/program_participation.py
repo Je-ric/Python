@@ -1,18 +1,23 @@
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.transform import factor_cmap
+from bokeh.palettes import Category20
 
 def program_participation(df):
     counts = df['programName'].value_counts()
-    source = ColumnDataSource(data=dict(program=counts.index.tolist(), count=counts.values))
+    programs = counts.index.tolist()
+    source = ColumnDataSource(data=dict(program=programs, count=counts.values))
 
-    # Horizontal bar chart: y_range gets the categories, x is numerical
-    fig = figure(y_range=counts.index.tolist(), height=400, title="Program Participation",
+    # Use a palette matching number of programs (max 20 colors)
+    palette = Category20[max(3, min(20, len(programs)))]
+
+    fig = figure(y_range=programs, height=500, width=750, title="Program Participation",
                  toolbar_location="above", tools="pan,wheel_zoom,box_zoom,reset")
 
     bars = fig.hbar(y='program', right='count', height=0.7, source=source,
-                    fill_color="teal", line_color="black", hover_fill_color="orange")
+                    fill_color=factor_cmap('program', palette=palette, factors=programs),
+                    line_color="black", hover_fill_color="orange")
 
-    # Add hover tooltips
     hover = HoverTool(tooltips=[("Program", "@program"), ("Count", "@count")], renderers=[bars])
     fig.add_tools(hover)
 
