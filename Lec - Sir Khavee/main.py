@@ -5,6 +5,7 @@ from data_loader import load_data
 from bokeh.layouts import gridplot
 from bokeh.plotting import output_file, show
 import pandas as pd
+
 # Import all chart functions
 from charts.gender_distribution import gender_distribution
 from charts.status_pie import status_pie
@@ -57,7 +58,6 @@ chart_functions = {
 checkbox = CheckboxGroup(labels=list(chart_functions.keys()), active=list(range(len(chart_functions))))
 
 # Div title
-# title_div = Div(text="<h2>Youmanitarian Dashboard</h2>", style={"text-align": "center"})
 title_div = Div(text="Youmanitarian Dashboard", styles={"text-align": "center", "font-size": "20px", "font-weight": "bold", "margin-bottom": "20px"})
 
 
