@@ -7,7 +7,7 @@ def chart(df):
     df['membershipPayment'] = pd.to_numeric(df['membershipPayment'], errors='coerce').fillna(0)
     df['volunteerStatusStr'] = df['isVolunteer'].astype(str)
 
-    p = figure(height=300, width=400, title="Donation vs Membership Payment",
+    p = figure(height=400, width=700, title="Donation vs Membership Payment",
                x_axis_label="Membership Payment (pesos)", y_axis_label="Donation (pesos)",
                tools="pan,wheel_zoom,box_zoom,reset")
 

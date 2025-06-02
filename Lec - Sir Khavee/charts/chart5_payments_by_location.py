@@ -1,13 +1,28 @@
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource
+import numpy as np
 
 def chart(df):
-    membership_payments = df.groupby('location')['membershipPayment'].sum().sort_values(ascending=False)
-    membership_source = ColumnDataSource(data=dict(location=membership_payments.index.tolist(), totalPayment=membership_payments.values))
+    # Extract membershipPayment column values (dropping NaNs)
+    payments = df['membershipPayment'].dropna()
 
-    p = figure(x_range=membership_payments.index.tolist(), height=300, title="Total Membership Payments by Location",
+    # Compute histogram bins and counts
+    hist, edges = np.histogram(payments, bins='auto')
+
+    source = ColumnDataSource(data=dict(
+        left=edges[:-1],
+        right=edges[1:],
+        count=hist
+    ))
+
+    p = figure(height=300, title="Histogram of Membership Payments",
                toolbar_location=None, tools="")
-    p.vbar(x='location', top='totalPayment', width=0.9, source=membership_source)
-    p.xaxis.major_label_orientation = 3.14 / 4
+
+    p.quad(bottom=0, top='count', left='left', right='right', source=source,
+           fill_color="navy", line_color="white", alpha=0.7)
+
     p.y_range.start = 0
+    p.xaxis.axis_label = "Membership Payment"
+    p.yaxis.axis_label = "Frequency"
+
     return p
