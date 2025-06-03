@@ -92,7 +92,7 @@ sidebar = column(
     width=300,
     sizing_mode="stretch_height",
     styles={
-        "background-color": "#f5f5f5",  # light grey tone
+        "background-color": "#fcfcfc",  # light grey tone
         "border-right": "2px solid #ffb51b",  # right divider line
         "padding": "15px",
         "box-sizing": "border-box",
@@ -122,9 +122,6 @@ dashboard_layout = row(
     sizing_mode="stretch_both"
 )
 
-# Add to the document
-# curdoc().add_root(column(title_div, dashboard_layout))
-# curdoc().title = "Youmanitarian Dashboard"
 curdoc().add_root(dashboard_layout)
 curdoc().title = "Youmanitarian Dashboard"
 
