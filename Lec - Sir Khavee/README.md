@@ -1,11 +1,6 @@
-Here’s a **README.md** for your interactive Bokeh dashboard project:
+# Youmanitarian International Interactive Dashboard
 
----
-
-```markdown
-# Youmanitarian Interactive Dashboard
-
-This project is a modular, interactive data visualization dashboard for the **Youmanitarian** platform using Python and Bokeh. It provides real-time analytics of user data such as gender distribution, volunteer status, program participation, donations, and ratings.
+This project is a modular, interactive data visualization dashboard for the **Youmanitarian International** platform using Python and Bokeh. It provides real-time analytics of user data such as gender distribution, volunteer status, program participation, donations, and ratings.
 
 ## 🌟 Features
 
@@ -17,24 +12,22 @@ This project is a modular, interactive data visualization dashboard for the **Yo
 ## 📁 Project Structure
 
 ```
-
 youmanitarian-dashboard/
 ├── main.py                       # Entry point for the interactive dashboard
-├── data\_loader.py               # Loads and processes CSV data
-├── youmanitarian\_user\_data.csv  # Dataset file
-├── charts/                      # Folder containing chart modules
-│   ├── gender\_distribution.py
-│   ├── status\_pie.py
-│   ├── program\_participation.py
-│   ├── rating\_distribution.py
-│   ├── donation\_by\_location.py
-│   ├── volunteer\_status.py
-│   ├── role\_distribution.py
-│   ├── donation\_by\_role.py
-│   └── rating\_by\_program.py
+├── data_loader.py                # Loads and processes CSV data
+├── youmanitarian_user_data.csv   # Dataset file
+├── charts/                       # Folder containing chart modules
+│   ├── gender_distribution.py
+│   ├── status_pie.py
+│   ├── program_participation.py
+│   ├── rating_distribution.py
+│   ├── donation_by_location.py
+│   ├── volunteer_status.py
+│   ├── role_distribution.py
+│   ├── donation_by_role.py
+│   └── rating_by_program.py
 └── README.md
-
-````
+```
 
 ## 🚀 How to Run
 
@@ -42,7 +35,7 @@ youmanitarian-dashboard/
 
 ```bash
 pip install bokeh pandas numpy
-````
+```
 
 ### 2. 🏃 Run the Dashboard
 
@@ -58,21 +51,18 @@ This will open the dashboard in your default web browser. From there, you can se
 
 You can add or remove charts by modifying:
 
-* The `chart_functions` dictionary in `main.py`
-* The corresponding chart modules in the `charts/` directory
+- The `chart_functions` dictionary in `main.py`
+- The corresponding chart modules in the `charts/` directory
 
 Each chart function accepts a Pandas DataFrame and returns a Bokeh figure.
 
 ## 📌 Notes
 
-* Ensure the `youmanitarian_user_data.csv` file is in the same directory as `main.py`.
-* If you add new columns to the dataset, you can create additional charts by adding new Python files inside the `charts/` directory and registering them in `main.py`.
+- Ensure the `youmanitarian_user_data.csv` file is in the same directory as `main.py`.
+- If you add new columns to the dataset, you can create additional charts by adding new Python files inside the `charts/` directory and registering them in `main.py`.
 
 ## 🤝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ---
-
-Let me know if you'd like a version that includes screenshots or hosting instructions (e.g. on Heroku or localhost deployment tips).
-```
